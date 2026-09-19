@@ -1,0 +1,14 @@
+services:
+  shortcut-review:
+    build: .
+    image: shortcut-context-review:latest
+    container_name: shortcut-review
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    volumes:
+      # 持久化上下文树与命令（删除容器后数据仍保留）
+      - shortcut-data:/app/data
+
+volumes:
+  shortcut-data:
